@@ -1,0 +1,58 @@
+
+import pygame
+import random
+import math
+
+# Settings
+WIDTH = 800
+HEIGHT = 600
+FPS = 60
+
+population_size = 100
+mutation_rate = 0.01
+lifespan = 300
+
+# Initialize Pygame
+pygame.init()
+
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("Smart Rockets")
+
+clock = pygame.time.Clock()
+
+# Target position
+target = pygame.Vector2(WIDTH / 2, 50)
+
+
+def setup():
+    pass
+
+
+def draw():
+    screen.fill((20, 20, 30))
+
+    # Draw target
+    pygame.draw.circle(
+        screen,
+        (255, 100, 100),
+        (int(target.x), int(target.y)),
+        15
+    )
+
+    pygame.display.flip()
+
+
+# Start simulation
+setup()
+
+running = True
+
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+    draw()
+    clock.tick(FPS)
+
+pygame.quit()
